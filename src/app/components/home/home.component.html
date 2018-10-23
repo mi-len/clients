@@ -1,0 +1,71 @@
+<section class="container">
+    <h1 class="title">List of all Clients</h1>
+
+    <button mat-button color="accent" routerLink="/add" id="addBtn"><mat-icon color="accent">add</mat-icon>Add New Client</button>
+    
+    <mat-form-field class="child">
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+
+    <mat-table [dataSource]='dataSource' matSort>
+
+        <ng-container matColumnDef='firstName'>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.firstName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef='middleName'>
+            <mat-header-cell *matHeaderCellDef>Middle Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.middleName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef='lastName'>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ element.lastName }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef='gender'>
+            <mat-header-cell *matHeaderCellDef>Gender</mat-header-cell>
+            <mat-cell *matCellDef="let element" class="gender"><i class="{{element.gender == 'man' ? 'fas fa-male' : 'fas fa-female'}}"></i></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef='bDate'>
+            <mat-header-cell *matHeaderCellDef mat-sort-header>Birth Date</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{element.bDate | date}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef='age'>
+            <mat-header-cell *matHeaderCellDef>Age</mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ getAge(element.bDate)}}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef='edit'>
+            <mat-header-cell *matHeaderCellDef>Edit</mat-header-cell>
+            <mat-cell *matCellDef="let element"><button mat-icon-button color='accent' routerLink='/edit/{{element._id}}'><mat-icon>edit</mat-icon></button></mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef='delete'>
+            <mat-header-cell *matHeaderCellDef>Delete</mat-header-cell>
+            <mat-cell *matCellDef="let element"><button mat-icon-button color='black' (click)="removeClient(element._id)"><mat-icon>cancel</mat-icon></button></mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+    </mat-table>
+    
+    <div *ngIf="!this.womenCount && !this.menCount" class="nobody">Currently 0 clients</div>
+
+    <mat-paginator
+        [length]="100"
+        [pageSize]="5"
+        [pageSizeOptions]="[5, 10, 25, 100]">
+    </mat-paginator>
+
+    <div class="stat">
+        <p>
+            <i class="fas fa-female"></i> : {{this.womenCount}}  <i class="fas fa-male"></i> : {{this.menCount}}
+        </p>
+    </div>
+
+</section>

@@ -1,1 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.toast-container .toast {
+  box-shadow: 0 0 0px #999999 !important;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;  
+}
+
+.toast-success {
+  background-color: #23b3d1 !important;
+}
+
+.toast-error {
+  background-color:#4354B3 !important;
+}

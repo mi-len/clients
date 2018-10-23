@@ -1,0 +1,33 @@
+<!-- {{model | json}} -->
+<div class="container">
+  <h1>Sign-In Form</h1>
+  <form #loginForm="ngForm" (ngSubmit)='login()'>
+    
+      <div class="row">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Username"
+            id="username" 
+            required
+            name='username'
+            [(ngModel)]='model.username'
+            #username='ngModel'>
+            <mat-error>Username is required!</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+          <mat-form-field>
+            <input type="password" matInput placeholder="Password"
+              id="password" 
+              required
+              name='password'
+              [(ngModel)]='model.password'
+              #password='ngModel'>
+              <mat-error>Password is required!</mat-error>
+          </mat-form-field>
+        </div>
+
+    <button type="submit" mat-raised-button color='accent' [disabled]='loginForm.form.invalid' class="loginBtn">Sign In</button>
+    
+  </form>
+</div>

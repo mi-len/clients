@@ -1,0 +1,9 @@
+
+  <mat-toolbar color="accent">
+      <span *ngIf="!authService.checkIfLogged()" routerLink="/landing" class="baseLink">Clients Database</span>
+      <div class="container" fxLayoutAlign="start start">
+        <a *ngIf="authService.checkIfLogged()" routerLink="/home" matTooltip="Home"><mat-icon color="white">home</mat-icon></a>
+        <a *ngIf="authService.checkIfLogged()" routerLink="/add" matTooltip="Add New Client"><mat-icon color="white">add</mat-icon></a>
+        <a *ngIf="authService.checkIfLogged()" (click)='logout()' matTooltip="Sign Out" class="logoutB"><mat-icon color="white">exit_to_app</mat-icon></a>
+     </div>
+  </mat-toolbar>

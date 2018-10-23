@@ -1,0 +1,73 @@
+<!-- {{model | json}} -->
+<div *ngIf="model" class="container">
+  <h1>Edit existing Client:</h1>
+
+  <form #editForm="ngForm" (ngSubmit)='editClient()'>
+  
+    <div class="row">
+      <mat-form-field>
+        <input type="text" matInput placeholder="First Name"
+          id="firstName" 
+          required
+          name='firstName'
+          [(ngModel)]='model.firstName'
+          #firstName='ngModel'>
+        <mat-error>Field is required!</mat-error>
+      </mat-form-field> 
+    </div>
+  
+    <div class="row">
+        <mat-form-field>
+          <input type="text" matInput placeholder="Middle Name"
+            id="middleName" 
+            required
+            name='middleName'
+            [(ngModel)]='model.middleName'
+            #middleName='ngModel'>
+          <mat-error>Field is required!</mat-error>
+        </mat-form-field> 
+      </div>
+
+    <div class="row">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Last Name"
+          id="lastName" 
+          required
+          name='lastName'
+          [(ngModel)]='model.lastName'
+          #lastName='ngModel'>
+        <mat-error>Field is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <mat-select placeholder="Gender" 
+          id="gender" name='gender' 
+          [(ngModel)]='model.gender'
+          required>
+          <mat-option *ngFor="let gender of genders" [(value)]="gender.value">
+            {{gender.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field hintLabel="MM/DD/YYYY">
+        <input matInput [matDatepicker]="picker" placeholder="Choose a date"
+        id="bDate" 
+        required
+        name='bDate'
+        [(ngModel)]='model.bDate'
+        #bDate='ngModel'>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error>Field is required!</mat-error>
+      </mat-form-field>
+    </div>
+
+    <button type="submit" mat-raised-button color='accent' [disabled]='editForm.form.invalid' class="editBtn">Save Client</button>
+    
+  </form>
+</div>

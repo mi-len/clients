@@ -1,0 +1,61 @@
+<!-- {{model | json}} -->
+<div class="container">
+  <h1>Register Form</h1>
+  <form #registerForm="ngForm" (ngSubmit)='register()'>
+    
+    <div class="row">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Username"
+          id="username" 
+          required
+          name='username'
+          pattern="^[A-Za-z\d]+$"
+          [(ngModel)]='model.username'
+          #username='ngModel'>
+        <mat-error>Username must contain only letters and digits.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <input type="password" matInput placeholder="Password"
+          id="password" 
+          required
+          name='password'
+          pattern="^[A-Za-z\d]{4,16}$"
+          [(ngModel)]='model.password'
+          #password='ngModel'>
+        <mat-error>Password must contain only letters and digits and must be between 4 and 16 symbols.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="row">
+      <mat-form-field>
+        <input type="text" matInput placeholder="First Name"
+          id="firstName" 
+          required
+          name='firstName'
+          pattern="^[A-Z][a-z]{2,16}$"
+          [(ngModel)]='model.firstName'
+          #firstName='ngModel'>
+        <mat-error>First Name must contain only letters and start with a capital letter.</mat-error>
+      </mat-form-field>
+    </div>
+  
+    <div class="row">
+      <mat-form-field>
+        <input type="text" matInput placeholder="Last Name"
+          id="lastName" 
+          required
+          name='lastName'
+          pattern="^[A-Z][a-z]{2,16}$"
+          [(ngModel)]='model.lastName'
+          #lastName='ngModel'>
+        <mat-error>Last Name must contain only letters and start with a capital letter.</mat-error>
+      </mat-form-field>
+    </div>
+
+    <button type="submit" mat-raised-button color='accent' [disabled]='registerForm.form.invalid' class="regBtn">Register</button>
+    
+  </form>
+</div>

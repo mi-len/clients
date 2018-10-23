@@ -1,0 +1,19 @@
+a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    transition:all 0.3s ease;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+.logoutB, .baseLink {
+    cursor: pointer;
+}
+
+.mat-tooltip {
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 0.8em;
+  }

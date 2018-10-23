@@ -1,0 +1,48 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+mat-table {
+    width: 80%;
+}
+
+.child {
+    width: 80%;
+}
+
+#addBtn {
+   position: relative;
+   left: 33%;
+}
+
+.stat {
+    position: relative;
+    left: 31%;
+}
+
+.gender i {
+    position: relative;
+    /* margin:0 auto; */
+    left: 5%;
+}
+
+.fa-female {
+    color: #F72C81;
+}
+
+.fa-male {
+    color: #4354B3
+}
+
+/* .mat-column-edit {
+    flex: 0 0 5% !important;
+    white-space: unset !important;
+} */
+
+/* .mat-column-age {
+    flex: 0 0 5% !important;
+    white-space: unset !important;
+} */
